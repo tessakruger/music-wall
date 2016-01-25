@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Music Wall</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/musicwall.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-play fa-2x"></i>
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#wall">Music Wall</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#add">Add a Track</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+<section id="wall" class="container content-section text-center">
+  <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+          <h1>MUSIC WALL</h1>
+					<% @tracks.each do |track| %>
+						<div class="track">
+							<h3><%= track.song_title %> <small>// <%= track.author %> <a href="<%= track.url %>" target="_blank"> <i class="fa fa-play-circle"></i></a></small>
+						</div>
+					<% end %>
+			</div>
+	</div>
+</section>
+
+<section id="add" class="content-section text-center">
+  <div class="download-section">
+      <div class="container">
+          <div class="col-lg-8 col-lg-offset-2">
+              <h2>Add a track</h2>
+              <a href="/tracks/new"><i class="fa fa-plus fa-3x"></i></a>
+          </div>
+      </div>
+  </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/musicwall.js"></script>
+
+</body>
+
+</html>
