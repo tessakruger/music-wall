@@ -40,14 +40,14 @@
       <div class="col-lg-8 col-lg-offset-2">
           <h1>MUSIC WALL</h1>
 					<% @tracks.each do |track| %>
-						<div class="track">
-							<h3><%= track.song_title %> <small>// <%= track.author %>
-                <a href="<%= track.url %>" target="_blank"> <i class="fa fa-play-circle"></i></a> /
-                <form method="post" action="/tracks/<%= track.id %>/delete">
-                  <a href="#DeletePrompt" class="portfolio-link" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
-              </small>
-						</div>
-					<% end %>
+            <form method="post" action="/tracks/<%= track.id %>/delete">
+  						<div class="track">
+  							<h3><%= track.song_title %> <small>// <%= track.author %>
+                  <a href="<%= track.url %>" target="_blank"> <i class="fa fa-play-circle"></i></a> /
+                    <a href="#DeletePrompt" class="portfolio-link" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                </small>
+  						</div>
+  					<% end %>
 			</div>
 	</div>
 </section>
@@ -98,3 +98,4 @@
     </div>
   </div>
 </div>
+</form>

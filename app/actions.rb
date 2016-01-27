@@ -74,7 +74,7 @@ end
 # Login validation
 post '/validate' do
   email = params[:email]
-  password = params[:password]
+  password = params[:password_digest]
   user = User.find_by(email: email, password: password)
   if user
     session[:user_id] = user.id
@@ -97,6 +97,9 @@ post '/tracks/:id/delete' do
 	track.delete
 	redirect '/tracks'
 end
+
+# Upvote a song
+
 
 # Login flow
 # 1. Get user info
