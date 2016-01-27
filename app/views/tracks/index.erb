@@ -1,27 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Music Wall</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/musicwall.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-
-</head>
-
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
     <!-- Navigation -->
@@ -32,7 +8,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play fa-2x"></i>
+                    <i class="fa fa-play"></i> <small><%= @user.first_name %></small>
                 </a>
             </div>
 
@@ -47,7 +23,10 @@
                         <a class="page-scroll" href="#wall">Music Wall</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#add">Add a Track</a>
+                        <a href="/tracks/new">Add a Track</a>
+                    </li>
+                    <li>
+                    	<a href="/logout">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -62,7 +41,11 @@
           <h1>MUSIC WALL</h1>
 					<% @tracks.each do |track| %>
 						<div class="track">
-							<h3><%= track.song_title %> <small>// <%= track.author %> <a href="<%= track.url %>" target="_blank"> <i class="fa fa-play-circle"></i></a></small>
+							<h3><%= track.song_title %> <small>// <%= track.author %>
+                <a href="<%= track.url %>" target="_blank"> <i class="fa fa-play-circle"></i></a> /
+                <form method="post" action="/tracks/<%= track.id %>/delete">
+                  <a href="#DeletePrompt" class="portfolio-link" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+              </small>
 						</div>
 					<% end %>
 			</div>
@@ -80,26 +63,38 @@
   </div>
 </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center">
+<!-- jQuery -->
+<script src="/js/jquery.js"></script>
 
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="/js/jquery.easing.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/musicwall.js"></script>
+
+
+
+<div class="portfolio-modal modal fade" id="DeletePrompt" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-content">
+    <div class="close-modal" data-dismiss="modal">
+      <div class="lr">
+        <div class="rl">
         </div>
-    </footer>
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/musicwall.js"></script>
-
-</body>
-
-</html>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="modal-body">
+            <h1>Are you sure you want to delete this track?</h1>
+            <input type="submit" value="YES">
+            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

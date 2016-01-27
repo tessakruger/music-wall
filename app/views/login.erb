@@ -1,0 +1,30 @@
+<h1>Login</h1>
+
+<% if session[:login_error] %>
+  <p><%= session[:login_error] %></p>
+<% end %>
+
+<form method="post" action="/validate">
+	<div class="form-group">
+    <label class="col-sm-2 control-label">Email:</label>
+    <div class="col-sm-10">
+    	<input type="text" name="email" class="form-control">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Password:</label>
+    <div class="col-sm-10">
+    	<input type="password" name="password" class="form-control">
+    </div>
+  </div>
+  <div class="form-group">
+ 		<div class="col-sm-10">
+  		<input type="submit" value="Let's go">
+  	</div>
+  </div>
+</form>
+
+<div class="col-sm-10">
+  <hr/>
+  <span><i class="fa fa-play"></i></span> <a href="/">Return home</a>
+</div>

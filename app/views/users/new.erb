@@ -1,0 +1,54 @@
+<h1>Join Music Wall</h1>
+
+<% if @user.errors.any? %>
+	<div>
+		<strong>Please ensure the following fields are completed:</strong>
+		<ul>
+			<% @user.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<form method="post" action="/users">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">First Name: *</label>
+    <div class="col-sm-10">
+      <input type="text" name="first_name" class="form-control" value="<%= @user.first_name %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Last Name:</label>
+    <div class="col-sm-10">
+      <input type="text" name="last_name" class="form-control" value="<%= @user.last_name %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Email: *</label>
+    <div class="col-sm-10">
+      <input type="text" name="email" class="form-control" value="<%= @user.email %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Password: *</label>
+    <div class="col-sm-10">
+      <input type="password" name="password" class="form-control" value="<%= @user.password %>">
+    </div>
+  </div>
+  <div class="form-group">
+  	<div class="col-sm-10">
+  		<label>* required fields</label>
+  	</div>
+	</div>
+ 	<div class="form-group">
+ 		<div class="col-sm-10">
+      <input type="submit" value="Get Started">
+    </div>
+  </div>
+</form>
+
+<div class="col-sm-10">
+  <hr/>
+  <span><i class="fa fa-play"></i></span> <a href="/">Return home</a>
+</div>
